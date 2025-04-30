@@ -1,5 +1,4 @@
-# GenAI for Data Scientists
-## Migration Pending 
+# [Migration Pending] GenAI for Data Scientists
 
 This is a personal learning repo where I explore Generative AI concepts, tools, and techniques — with a focus on how they intersect with data science workflows.
 

@@ -13,14 +13,13 @@ This is not a polished course or GenAI hype repo. It's a **deliberate, hands-on 
 
 Each notebook is self-contained and builds on the last:
 
-1. `01_neural_networks.ipynb` – Foundations of neural networks  
-2. `02_deep_learning.ipynb` – Concepts like depth, activations, backprop  
-3. `03_transformers_architecture.ipynb` – The core building block of LLMs  
-4. `04_large_language_models.ipynb` – What makes a model an LLM  
-5. `05_prompt_engineering.ipynb` – How to use models effectively  
-6. `06_fine_tuning_llms.ipynb` – When and how to fine-tune  
-7. `07_huggingface_workflows.ipynb` – Real-world tooling and workflows  
-8. `08_genai_use_cases.ipynb` – Common applied patterns (Q&A, summarization, etc.)  
-9. `09_deploying_genai_models.ipynb` – Serve your own GenAI-powered apps
-
+1. [`01_neural_networks.ipynb`](./98_html_exports/01_neural_networks.html) – Foundations of neural networks  
+2. [`02_deep_learning.ipynb`](./98_html_exports/02_deep_learning.html) – Concepts like depth, activations, backprop  
+3. [`03_transformers_architecture.ipynb`](./98_html_exports/03_transformers_architecture.html) – The core building block of LLMs  
+4. [`04_large_language_models.ipynb`](./98_html_exports/04_large_language_models.html) – What makes a model an LLM  
+5. [`05_prompt_engineering.ipynb`](./98_html_exports/05_prompt_engineering.html) – How to use models effectively  
+6. [`06_fine_tuning_llms.ipynb`](./98_html_exports/06_fine_tuning_llms.html) – When and how to fine-tune  
+7. [`07_huggingface_workflows.ipynb`](./98_html_exports/07_huggingface_workflows.html) – Real-world tooling and workflows  
+8. [`08_genai_use_cases.ipynb`](./98_html_exports/08_genai_use_cases.html) – Common applied patterns (Q&A, summarization, etc.)  
+9. [`09_deploying_genai_models.ipynb`](./98_html_exports/09_deploying_genai_models.html) – Serve your own GenAI-powered apps
 ---

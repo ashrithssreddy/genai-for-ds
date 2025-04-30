@@ -19,6 +19,6 @@ Each notebook is self-contained and builds on the last:
 5. [`05 Prompt Engineering`](./98_html_exports/05_prompt_engineering.html) – How to use models effectively  
 6. [`06 Fine Tuning LLMs`](./98_html_exports/06_fine_tuning_llms.html) – When and how to fine-tune  
 7. [`07 Huggingface Workflows`](./98_html_exports/07_huggingface_workflows.html) – Real-world tooling and workflows  
-8. [`08 GenAI_Use_Cases`](./98_html_exports/08_genai_use_cases.html) – Common applied patterns (Q&A, summarization, etc.)  
+8. [`08 GenAI Use Cases`](./98_html_exports/08_genai_use_cases.html) – Common applied patterns (Q&A, summarization, etc.)  
 9. [`09 Deploying GenAI Models`](./98_html_exports/09_deploying_genai_models.html) – Serve your own GenAI-powered apps
 ---

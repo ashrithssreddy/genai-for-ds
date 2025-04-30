@@ -1,4 +1,4 @@
-# 🧠 GenAI for Data Scientists
+# 🧠 [Migration Pending] GenAI for Data Scientists
 
 This repo is a **practical, structured guide for data scientists transitioning into Generative AI** — built from scratch to go from traditional ML to deploying GenAI applications.
 
@@ -11,7 +11,7 @@ The goal: arrive at *practical readiness* to work with modern GenAI stacks — f
 
 ## 🧱 Learning Flow
 
-Each notebook is self-contained and builds on the last:
+Each notebook is self-contained and builds on the prior:
 
 1. [`Neural Networks`](./98_html_exports/01_neural_networks.html) – Foundations of neural networks  
 2. [`Deep Learning`](./98_html_exports/02_deep_learning.html) – Concepts like depth, activations, backprop  

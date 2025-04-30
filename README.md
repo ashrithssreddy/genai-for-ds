@@ -1,4 +1,4 @@
-# 🧠 [Migration Pending] GenAI for Data Scientists
+# 🧠 GenAI for Data Scientists [Migration Pending]
 
 This repo is a **practical, structured guide for data scientists transitioning into Generative AI** — built from scratch to go from traditional ML to deploying GenAI applications.
 

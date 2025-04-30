@@ -6,7 +6,8 @@ This repo is a **practical, structured guide for data scientists transitioning i
 If you're familiar with machine learning and want to ramp up on GenAI *without getting lost in research papers*, this is for you.
 
 #### 🧪 Purpose
-This is not a polished course or GenAI hype repo. It's a **deliberate, hands-on learning path**. The goal: arrive at *practical readiness* to work with modern GenAI stacks — from LLM fundamentals to real deployments.
+This is not a polished course or GenAI hype repo. It's a deliberate, hands-on learning path. 
+The goal: arrive at *practical readiness* to work with modern GenAI stacks — from Nueral Network fundamentals to real genAI app deployments.
 
 ## 🧱 Learning Flow
 

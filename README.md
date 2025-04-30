@@ -19,4 +19,3 @@ This is a personal learning repo where I explore Generative AI concepts, tools, 
 This repo is a work in progress. Feel free to browse, fork, or suggest ideas.
 
 ## Resources
-A curated list of resources will be added in [`docs/resources.md`](docs/resources.md)

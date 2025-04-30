@@ -7,6 +7,7 @@ If you're familiar with machine learning and want to ramp up on GenAI *without g
 
 #### 🧪 Purpose
 This is not a polished course or GenAI hype repo. It's a **deliberate, hands-on learning path**. The goal: arrive at *practical readiness* to work with modern GenAI stacks — from LLM fundamentals to real deployments.
+
 ---
 
 ## 🧱 Learning Flow

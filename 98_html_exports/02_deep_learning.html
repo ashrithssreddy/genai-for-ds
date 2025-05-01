@@ -3,7 +3,7 @@
 <html lang="en">
 <head><meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>01_neural_networks</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>02_deep_learning</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <style type="text/css">
     pre { line-height: 125%; }
 td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
@@ -7511,63 +7511,67 @@ a.anchor-link {
 <!-- End of mermaid configuration --></head>
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
 <main>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=438a6db8">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ed0f1556">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p><a id="table-of-contents"></a></p>
-<h1 id="%F0%9F%93%96-Neural-Networks">📖 Neural Networks<a class="anchor-link" href="#%F0%9F%93%96-Neural-Networks">¶</a></h1><ul>
-<li><a href="#introduction-to-neural-networks">🧠 Introduction to Neural Networks</a><ul>
-<li><a href="#what-is-a-neural-network">🔑 What is a Neural Network?</a></li>
-<li><a href="#why-neural-networks-vs-traditional-ml">🎯 Why Neural Networks? (vs. Traditional ML)</a></li>
-<li><a href="#real-world-applications">🌍 Real-world Applications</a></li>
+<h1 id="%F0%9F%93%96-Deep-Learning">📖 Deep Learning<a class="anchor-link" href="#%F0%9F%93%96-Deep-Learning">¶</a></h1><ul>
+<li><a href="#what-is-deep-learning">🧠 What is Deep Learning?</a><ul>
+<li><a href="#relationship-to-neural-networks">🔑 Relationship to Neural Networks</a></li>
+<li><a href="#depth-vs-width">🧱 Depth vs. Width</a></li>
+<li><a href="#representation-learning">🧠 Representation Learning</a></li>
 </ul>
 </li>
-<li><a href="#setup-problem-and-dataset">🔧 Setup Problem and Dataset</a><ul>
-<li><a href="#define-a-simple-classification-problem">📝 Define a Simple Classification Problem</a></li>
-<li><a href="#visualize-the-dataset">📊 Visualize the Dataset</a></li>
-<li><a href="#define-model-input-output">💡 Define Model Input/Output</a></li>
+<li><a href="#setup-complex-dataset">🧪 Setup: Complex Dataset</a><ul>
+<li><a href="#example-cifar10-or-similar">🧬 Example: CIFAR-10 or Similar</a></li>
+<li><a href="#class-imbalance">📊 Class Imbalance / Real-world Noise</a></li>
+<li><a href="#feature-complexity">🧮 Feature Complexity vs. Model Depth</a></li>
 </ul>
 </li>
-<li><a href="#building-blocks-of-neural-networks">🛠️ Building Blocks of Neural Networks</a><ul>
-<li><a href="#neurons-inputs-weights-biases-activation-functions">🔲 Neurons: Inputs, Weights, Biases, Activation Functions</a></li>
-<li><a href="#layers-input-hidden-output">🔗 Layers: Input, Hidden, Output</a></li>
-<li><a href="#forward-propagation-math-and-code">🔄 Forward Propagation (math and code)</a></li>
+<li><a href="#deep-network-architecture">🧱 Deep Network Architecture</a><ul>
+<li><a href="#stacking-layers">🏗️ Stacking Layers: Concept and Challenges</a></li>
+<li><a href="#activation-functions">🔥 Activation Functions</a></li>
+<li><a href="#depth-in-feature-hierarchy">🧠 Role of Depth in Feature Hierarchy</a></li>
 </ul>
 </li>
-<li><a href="#training-neural-networks">⚙️ Training Neural Networks</a><ul>
-<li><a href="#loss-functions">📝 Loss Functions (e.g., MSE, Cross-Entropy)</a></li>
-<li><a href="#backpropagation">🔁 Backpropagation (Chain Rule, Gradients)</a></li>
-<li><a href="#gradient-descent-and-variants">🚀 Gradient Descent and Variants (SGD, Adam)</a></li>
+<li><a href="#loss-surfaces">🎯 Loss Surfaces and Optimization</a><ul>
+<li><a href="#non-convex-landscapes">🌄 Non-convex Landscapes</a></li>
+<li><a href="#vanishing-exploding-gradients">🌀 Vanishing/Exploding Gradients</a></li>
+<li><a href="#weight-initialization">⚙️ Weight Initialization Strategies</a></li>
 </ul>
 </li>
-<li><a href="#neural-network-architectures">🔬 Neural Network Architectures</a><ul>
-<li><a href="#feedforward-neural-networks">⚡ Feedforward Neural Networks (MLP)</a></li>
-<li><a href="#convolutional-neural-networks">🔍 Convolutional Neural Networks (CNN) – High level</a></li>
-<li><a href="#recurrent-neural-networks">🔄 Recurrent Neural Networks (RNN) – High level</a></li>
-<li><a href="#when-to-use-what">❓ When to use what?</a></li>
+<li><a href="#training-deep-networks">🧰 Training Deep Networks</a><ul>
+<li><a href="#batch-training">🧮 Batch Training and Mini-Batch SGD</a></li>
+<li><a href="#gradient-clipping">🛠️ Gradient Clipping</a></li>
+<li><a href="#optimizers">🚀 Optimizers</a></li>
 </ul>
 </li>
-<li><a href="#improving-neural-networks">🛠️ Improving Neural Networks</a><ul>
-<li><a href="#overfitting-and-underfitting">⚖️ Overfitting and Underfitting</a></li>
-<li><a href="#regularization">🔧 Regularization (Dropout, L2)</a></li>
-<li><a href="#batch-normalization">📈 Batch Normalization</a></li>
-<li><a href="#hyperparameter-tuning">⚙️ Hyperparameter Tuning (Learning Rate, Batch Size, Layers)</a></li>
+<li><a href="#advanced-training-tricks">🧠 Advanced Training Tricks</a><ul>
+<li><a href="#lr-scheduling">⏱️ Learning Rate Scheduling</a></li>
+<li><a href="#early-stopping">🧊 Early Stopping</a></li>
+<li><a href="#dropout">🎲 Dropout in Deep Models</a></li>
+<li><a href="#data-augmentation">🧪 Data Augmentation</a></li>
 </ul>
 </li>
-<li><a href="#applications-and-case-studies">📚 Applications and Case Studies</a><ul>
-<li><a href="#small-handwritten-digit-classifier">🔢 Small Handwritten Digit Classifier (e.g., MNIST 1000 samples subset)</a></li>
-<li><a href="#tiny-time-series-predictor">📈 Tiny Time Series Predictor</a></li>
+<li><a href="#transfer-learning">📚 Transfer Learning &amp; Pretraining</a><ul>
+<li><a href="#why-pretrained">🔄 Why Pretrained Models Work</a></li>
+<li><a href="#finetuning-vs-extraction">🏗️ Fine-tuning vs. Feature Extraction</a></li>
+<li><a href="#common-pretrained">🌍 Common Pretrained Networks</a></li>
+</ul>
+</li>
+<li><a href="#scaling-up">📈 Scaling Up</a><ul>
+<li><a href="#depth-vs-performance">🧮 Depth vs. Performance Tradeoffs</a></li>
+<li><a href="#hardware">🧠 Hardware Considerations</a></li>
+<li><a href="#batch-norm-vs-gradient">⚖️ Batch Norm vs. Gradient Flow</a></li>
 </ul>
 </li>
 <li><a href="#closing-notes">🔚 Closing Notes</a><ul>
-<li><a href="#common-pitfalls">⚠️ Common Pitfalls</a></li>
-<li><a href="#best-practices">🎯 Best Practices</a></li>
-<li><a href="#scaling-challenges-in-neural-networks">⚡ Scaling Challenges</a></li>
-<li><a href="#further-topics-to-learn-in-neural-networks">🚀 Further Topics</a></li>
-<li><a href="#what-to-learn-after-neural-networks">🔮 What Next</a></li>
+<li><a href="#summary">🧠 Summary of Key Concepts</a></li>
+<li><a href="#pitfalls">⚠️ Common Pitfalls in Deep Learning</a></li>
+<li><a href="#whats-next">🚀 What's Next: Transformers &amp; Attention</a></li>
 </ul>
 </li>
 </ul>
@@ -7576,115 +7580,55 @@ a.anchor-link {
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=def5887d">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=56634949">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><a id="introduction-to-neural-networks"></a></p>
-<h1 id="%F0%9F%A7%A0-Introduction-to-Neural-Networks">🧠 Introduction to Neural Networks<a class="anchor-link" href="#%F0%9F%A7%A0-Introduction-to-Neural-Networks">¶</a></h1>
+<p><a id="what-is-deep-learning"></a></p>
+<h1 id="%F0%9F%A7%A0-What-is-Deep-Learning?">🧠 What is Deep Learning?<a class="anchor-link" href="#%F0%9F%A7%A0-What-is-Deep-Learning?">¶</a></h1>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=38f5bc72">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=0cc01453">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><a id="what-is-a-neural-network"></a></p>
-<h4 id="%F0%9F%94%91-What-is-a-Neural-Network?">🔑 What is a Neural Network?<a class="anchor-link" href="#%F0%9F%94%91-What-is-a-Neural-Network?">¶</a></h4>
+<p><a id="relationship-to-neural-networks"></a></p>
+<h4 id="%F0%9F%94%91-Relationship-to-Neural-Networks">🔑 Relationship to Neural Networks<a class="anchor-link" href="#%F0%9F%94%91-Relationship-to-Neural-Networks">¶</a></h4>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=8877666e">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=4ae862b8">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><a id="why-neural-networks-vs-traditional-ml"></a></p>
-<h4 id="%F0%9F%8E%AF-Why-Neural-Networks?-(vs.-Traditional-ML)">🎯 Why Neural Networks? (vs. Traditional ML)<a class="anchor-link" href="#%F0%9F%8E%AF-Why-Neural-Networks?-(vs.-Traditional-ML)">¶</a></h4>
+<p><a id="depth-vs-width"></a></p>
+<h4 id="%F0%9F%A7%B1-Depth-vs.-Width">🧱 Depth vs. Width<a class="anchor-link" href="#%F0%9F%A7%B1-Depth-vs.-Width">¶</a></h4>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=65e84f1e">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=6bce93b5">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><a id="real-world-applications"></a></p>
-<h4 id="%F0%9F%8C%8D-Real-world-Applications">🌍 Real-world Applications<a class="anchor-link" href="#%F0%9F%8C%8D-Real-world-Applications">¶</a></h4>
+<p><a id="representation-learning"></a></p>
+<h4 id="%F0%9F%A7%A0-Representation-Learning">🧠 Representation Learning<a class="anchor-link" href="#%F0%9F%A7%A0-Representation-Learning">¶</a></h4>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=dee17ff1">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><a href="#table-of-contents">Back to the top</a></p>
-<hr/>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=da098752">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><a id="setup-problem-and-dataset"></a></p>
-<h1 id="%F0%9F%94%A7-Setup-Problem-and-Dataset">🔧 Setup Problem and Dataset<a class="anchor-link" href="#%F0%9F%94%A7-Setup-Problem-and-Dataset">¶</a></h1>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=0119ee77">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><a id="define-a-simple-classification-problem"></a></p>
-<h4 id="%F0%9F%93%9D-Define-a-Simple-Classification-Problem">📝 Define a Simple Classification Problem<a class="anchor-link" href="#%F0%9F%93%9D-Define-a-Simple-Classification-Problem">¶</a></h4>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=21b5516d">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><a id="visualize-the-dataset"></a></p>
-<h4 id="%F0%9F%93%8A-Visualize-the-Dataset">📊 Visualize the Dataset<a class="anchor-link" href="#%F0%9F%93%8A-Visualize-the-Dataset">¶</a></h4>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=bded22b4">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><a id="define-model-input-output"></a></p>
-<h4 id="%F0%9F%92%A1-Define-Model-Input/Output">💡 Define Model Input/Output<a class="anchor-link" href="#%F0%9F%92%A1-Define-Model-Input/Output">¶</a></h4>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=92bd9235">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=882a9ebe">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7696,115 +7640,55 @@ a.anchor-link {
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=df2b5903">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=3d1e7ff6">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><a id="building-blocks-of-neural-networks"></a></p>
-<h1 id="%F0%9F%9B%A0%EF%B8%8F-Building-Blocks-of-Neural-Networks">🛠️ Building Blocks of Neural Networks<a class="anchor-link" href="#%F0%9F%9B%A0%EF%B8%8F-Building-Blocks-of-Neural-Networks">¶</a></h1>
+<p><a id="setup-complex-dataset"></a></p>
+<h1 id="%F0%9F%A7%AA-Setup:-Complex-Dataset">🧪 Setup: Complex Dataset<a class="anchor-link" href="#%F0%9F%A7%AA-Setup:-Complex-Dataset">¶</a></h1>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=29c101ad">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=eefffacc">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><a id="neurons-inputs-weights-biases-activation-functions"></a></p>
-<h4 id="%F0%9F%94%B2-Neurons:-Inputs,-Weights,-Biases,-Activation-Functions">🔲 Neurons: Inputs, Weights, Biases, Activation Functions<a class="anchor-link" href="#%F0%9F%94%B2-Neurons:-Inputs,-Weights,-Biases,-Activation-Functions">¶</a></h4>
+<p><a id="example-cifar10-or-similar"></a></p>
+<h4 id="%F0%9F%A7%AC-Example:-CIFAR-10-or-Similar">🧬 Example: CIFAR-10 or Similar<a class="anchor-link" href="#%F0%9F%A7%AC-Example:-CIFAR-10-or-Similar">¶</a></h4>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=4bc45708">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=69e6118d">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><a id="layers-input-hidden-output"></a></p>
-<h4 id="%F0%9F%94%97-Layers:-Input,-Hidden,-Output">🔗 Layers: Input, Hidden, Output<a class="anchor-link" href="#%F0%9F%94%97-Layers:-Input,-Hidden,-Output">¶</a></h4>
+<p><a id="class-imbalance"></a></p>
+<h4 id="%F0%9F%93%8A-Class-Imbalance-/-Real-world-Noise">📊 Class Imbalance / Real-world Noise<a class="anchor-link" href="#%F0%9F%93%8A-Class-Imbalance-/-Real-world-Noise">¶</a></h4>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=379c48f8">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=584f32c3">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><a id="forward-propagation-math-and-code"></a></p>
-<h4 id="%F0%9F%94%84-Forward-Propagation-(math-and-code)">🔄 Forward Propagation (math and code)<a class="anchor-link" href="#%F0%9F%94%84-Forward-Propagation-(math-and-code)">¶</a></h4>
+<p><a id="feature-complexity"></a></p>
+<h4 id="%F0%9F%A7%AE-Feature-Complexity-vs.-Model-Depth">🧮 Feature Complexity vs. Model Depth<a class="anchor-link" href="#%F0%9F%A7%AE-Feature-Complexity-vs.-Model-Depth">¶</a></h4>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=5a0229ff">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><a href="#table-of-contents">Back to the top</a></p>
-<hr/>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d8536d9a">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><a id="training-neural-networks"></a></p>
-<h1 id="%E2%9A%99%EF%B8%8F-Training-Neural-Networks">⚙️ Training Neural Networks<a class="anchor-link" href="#%E2%9A%99%EF%B8%8F-Training-Neural-Networks">¶</a></h1>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=548b42e5">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><a id="loss-functions"></a></p>
-<h4 id="%F0%9F%93%9D-Loss-Functions-(e.g.,-MSE,-Cross-Entropy)">📝 Loss Functions (e.g., MSE, Cross-Entropy)<a class="anchor-link" href="#%F0%9F%93%9D-Loss-Functions-(e.g.,-MSE,-Cross-Entropy)">¶</a></h4>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=baadd963">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><a id="backpropagation"></a></p>
-<h4 id="%F0%9F%94%81-Backpropagation-(Chain-Rule,-Gradients)">🔁 Backpropagation (Chain Rule, Gradients)<a class="anchor-link" href="#%F0%9F%94%81-Backpropagation-(Chain-Rule,-Gradients)">¶</a></h4>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f2fea451">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><a id="gradient-descent-and-variants"></a></p>
-<h4 id="%F0%9F%9A%80-Gradient-Descent-and-Variants-(SGD,-Adam)">🚀 Gradient Descent and Variants (SGD, Adam)<a class="anchor-link" href="#%F0%9F%9A%80-Gradient-Descent-and-Variants-(SGD,-Adam)">¶</a></h4>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ed723564">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=9921415e">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7816,67 +7700,55 @@ a.anchor-link {
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cbba1f10">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=35157550">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><a id="neural-network-architectures"></a></p>
-<h1 id="%F0%9F%94%AC-Neural-Network-Architectures">🔬 Neural Network Architectures<a class="anchor-link" href="#%F0%9F%94%AC-Neural-Network-Architectures">¶</a></h1>
+<p><a id="deep-network-architecture"></a></p>
+<h1 id="%F0%9F%A7%B1-Deep-Network-Architecture">🧱 Deep Network Architecture<a class="anchor-link" href="#%F0%9F%A7%B1-Deep-Network-Architecture">¶</a></h1>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=635cb8f6">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d656cf9a">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><a id="feedforward-neural-networks"></a></p>
-<h4 id="%E2%9A%A1-Feedforward-Neural-Networks-(MLP)">⚡ Feedforward Neural Networks (MLP)<a class="anchor-link" href="#%E2%9A%A1-Feedforward-Neural-Networks-(MLP)">¶</a></h4>
+<p><a id="stacking-layers"></a></p>
+<h4 id="%F0%9F%8F%97%EF%B8%8F-Stacking-Layers:-Concept-and-Challenges">🏗️ Stacking Layers: Concept and Challenges<a class="anchor-link" href="#%F0%9F%8F%97%EF%B8%8F-Stacking-Layers:-Concept-and-Challenges">¶</a></h4>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c30d8d90">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=57d376a6">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><a id="convolutional-neural-networks"></a></p>
-<h4 id="%F0%9F%94%8D-Convolutional-Neural-Networks-(CNN)-%E2%80%93-High-level">🔍 Convolutional Neural Networks (CNN) – High level<a class="anchor-link" href="#%F0%9F%94%8D-Convolutional-Neural-Networks-(CNN)-%E2%80%93-High-level">¶</a></h4>
+<p><a id="activation-functions"></a></p>
+<h4 id="%F0%9F%94%A5-Activation-Functions">🔥 Activation Functions<a class="anchor-link" href="#%F0%9F%94%A5-Activation-Functions">¶</a></h4>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=6c3a35a0">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=6681a0a8">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><a id="recurrent-neural-networks"></a></p>
-<h4 id="%F0%9F%94%84-Recurrent-Neural-Networks-(RNN)-%E2%80%93-High-level">🔄 Recurrent Neural Networks (RNN) – High level<a class="anchor-link" href="#%F0%9F%94%84-Recurrent-Neural-Networks-(RNN)-%E2%80%93-High-level">¶</a></h4>
+<p><a id="depth-in-feature-hierarchy"></a></p>
+<h4 id="%F0%9F%A7%A0-Role-of-Depth-in-Feature-Hierarchy">🧠 Role of Depth in Feature Hierarchy<a class="anchor-link" href="#%F0%9F%A7%A0-Role-of-Depth-in-Feature-Hierarchy">¶</a></h4>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=01869188">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><a id="when-to-use-what"></a></p>
-<h4 id="%E2%9D%93-When-to-use-what?">❓ When to use what?<a class="anchor-link" href="#%E2%9D%93-When-to-use-what?">¶</a></h4>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=4b600df0">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f5dba767">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7888,67 +7760,55 @@ a.anchor-link {
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d865d341">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c5b04b20">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><a id="improving-neural-networks"></a></p>
-<h1 id="%F0%9F%9B%A0%EF%B8%8F-Improving-Neural-Networks">🛠️ Improving Neural Networks<a class="anchor-link" href="#%F0%9F%9B%A0%EF%B8%8F-Improving-Neural-Networks">¶</a></h1>
+<p><a id="loss-surfaces"></a></p>
+<h1 id="%F0%9F%8E%AF-Loss-Surfaces-and-Optimization">🎯 Loss Surfaces and Optimization<a class="anchor-link" href="#%F0%9F%8E%AF-Loss-Surfaces-and-Optimization">¶</a></h1>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=5bf30c0c">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ac97da85">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><a id="overfitting-and-underfitting"></a></p>
-<h4 id="%E2%9A%96%EF%B8%8F-Overfitting-and-Underfitting">⚖️ Overfitting and Underfitting<a class="anchor-link" href="#%E2%9A%96%EF%B8%8F-Overfitting-and-Underfitting">¶</a></h4>
+<p><a id="non-convex-landscapes"></a></p>
+<h4 id="%F0%9F%8C%84-Non-convex-Landscapes">🌄 Non-convex Landscapes<a class="anchor-link" href="#%F0%9F%8C%84-Non-convex-Landscapes">¶</a></h4>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=795e1af5">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=1a6be519">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><a id="regularization"></a></p>
-<h4 id="%F0%9F%94%A7-Regularization-(Dropout,-L2)">🔧 Regularization (Dropout, L2)<a class="anchor-link" href="#%F0%9F%94%A7-Regularization-(Dropout,-L2)">¶</a></h4>
+<p><a id="vanishing-exploding-gradients"></a></p>
+<h4 id="%F0%9F%8C%80-Vanishing/Exploding-Gradients">🌀 Vanishing/Exploding Gradients<a class="anchor-link" href="#%F0%9F%8C%80-Vanishing/Exploding-Gradients">¶</a></h4>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c88aa7b4">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=5b56b639">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><a id="batch-normalization"></a></p>
-<h4 id="%F0%9F%93%88-Batch-Normalization">📈 Batch Normalization<a class="anchor-link" href="#%F0%9F%93%88-Batch-Normalization">¶</a></h4>
+<p><a id="weight-initialization"></a></p>
+<h4 id="%E2%9A%99%EF%B8%8F-Weight-Initialization-Strategies">⚙️ Weight Initialization Strategies<a class="anchor-link" href="#%E2%9A%99%EF%B8%8F-Weight-Initialization-Strategies">¶</a></h4>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=70697362">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><a id="hyperparameter-tuning"></a></p>
-<h4 id="%E2%9A%99%EF%B8%8F-Hyperparameter-Tuning-(Learning-Rate,-Batch-Size,-Layers)">⚙️ Hyperparameter Tuning (Learning Rate, Batch Size, Layers)<a class="anchor-link" href="#%E2%9A%99%EF%B8%8F-Hyperparameter-Tuning-(Learning-Rate,-Batch-Size,-Layers)">¶</a></h4>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=160e49fb">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=4cff339e">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7960,43 +7820,55 @@ a.anchor-link {
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=e1b5e25a">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=57f4bd5d">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><a id="applications-and-case-studies"></a></p>
-<h1 id="%F0%9F%93%9A-Applications-and-Case-Studies">📚 Applications and Case Studies<a class="anchor-link" href="#%F0%9F%93%9A-Applications-and-Case-Studies">¶</a></h1>
+<p><a id="training-deep-networks"></a></p>
+<h1 id="%F0%9F%A7%B0-Training-Deep-Networks">🧰 Training Deep Networks<a class="anchor-link" href="#%F0%9F%A7%B0-Training-Deep-Networks">¶</a></h1>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=5c7fcf79">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c4f1cd18">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><a id="small-handwritten-digit-classifier"></a></p>
-<h4 id="%F0%9F%94%A2-Small-Handwritten-Digit-Classifier-(e.g.,-MNIST-1000-samples-subset)">🔢 Small Handwritten Digit Classifier (e.g., MNIST 1000 samples subset)<a class="anchor-link" href="#%F0%9F%94%A2-Small-Handwritten-Digit-Classifier-(e.g.,-MNIST-1000-samples-subset)">¶</a></h4>
+<p><a id="batch-training"></a></p>
+<h4 id="%F0%9F%A7%AE-Batch-Training-and-Mini-Batch-SGD">🧮 Batch Training and Mini-Batch SGD<a class="anchor-link" href="#%F0%9F%A7%AE-Batch-Training-and-Mini-Batch-SGD">¶</a></h4>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=6d52e6a0">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=8a6a55a3">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><a id="tiny-time-series-predictor"></a></p>
-<h4 id="%F0%9F%93%88-Tiny-Time-Series-Predictor">📈 Tiny Time Series Predictor<a class="anchor-link" href="#%F0%9F%93%88-Tiny-Time-Series-Predictor">¶</a></h4>
+<p><a id="gradient-clipping"></a></p>
+<h4 id="%F0%9F%9B%A0%EF%B8%8F-Gradient-Clipping">🛠️ Gradient Clipping<a class="anchor-link" href="#%F0%9F%9B%A0%EF%B8%8F-Gradient-Clipping">¶</a></h4>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=4ec26e10">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=a7a7af88">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p><a id="optimizers"></a></p>
+<h4 id="%F0%9F%9A%80-Optimizers">🚀 Optimizers<a class="anchor-link" href="#%F0%9F%9A%80-Optimizers">¶</a></h4>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=03e0071a">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8008,7 +7880,199 @@ a.anchor-link {
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=52bd49da">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=6f3947d4">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p><a id="advanced-training-tricks"></a></p>
+<h1 id="%F0%9F%A7%A0-Advanced-Training-Tricks">🧠 Advanced Training Tricks<a class="anchor-link" href="#%F0%9F%A7%A0-Advanced-Training-Tricks">¶</a></h1>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=3ab29c2c">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p><a id="lr-scheduling"></a></p>
+<h4 id="%E2%8F%B1%EF%B8%8F-Learning-Rate-Scheduling">⏱️ Learning Rate Scheduling<a class="anchor-link" href="#%E2%8F%B1%EF%B8%8F-Learning-Rate-Scheduling">¶</a></h4>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=a451fe80">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p><a id="early-stopping"></a></p>
+<h4 id="%F0%9F%A7%8A-Early-Stopping">🧊 Early Stopping<a class="anchor-link" href="#%F0%9F%A7%8A-Early-Stopping">¶</a></h4>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=19a442a7">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p><a id="dropout"></a></p>
+<h4 id="%F0%9F%8E%B2-Dropout-in-Deep-Models">🎲 Dropout in Deep Models<a class="anchor-link" href="#%F0%9F%8E%B2-Dropout-in-Deep-Models">¶</a></h4>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=67647990">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p><a id="data-augmentation"></a></p>
+<h4 id="%F0%9F%A7%AA-Data-Augmentation">🧪 Data Augmentation<a class="anchor-link" href="#%F0%9F%A7%AA-Data-Augmentation">¶</a></h4>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=899ef15f">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p><a href="#table-of-contents">Back to the top</a></p>
+<hr/>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=1247d1d9">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p><a id="transfer-learning"></a></p>
+<h1 id="%F0%9F%93%9A-Transfer-Learning-&amp;-Pretraining">📚 Transfer Learning &amp; Pretraining<a class="anchor-link" href="#%F0%9F%93%9A-Transfer-Learning-&amp;-Pretraining">¶</a></h1>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=3fa73e1a">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p><a id="why-pretrained"></a></p>
+<h4 id="%F0%9F%94%84-Why-Pretrained-Models-Work">🔄 Why Pretrained Models Work<a class="anchor-link" href="#%F0%9F%94%84-Why-Pretrained-Models-Work">¶</a></h4>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b450e040">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p><a id="finetuning-vs-extraction"></a></p>
+<h4 id="%F0%9F%8F%97%EF%B8%8F-Fine-tuning-vs.-Feature-Extraction">🏗️ Fine-tuning vs. Feature Extraction<a class="anchor-link" href="#%F0%9F%8F%97%EF%B8%8F-Fine-tuning-vs.-Feature-Extraction">¶</a></h4>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=2cd98b65">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p><a id="common-pretrained"></a></p>
+<h4 id="%F0%9F%8C%8D-Common-Pretrained-Networks">🌍 Common Pretrained Networks<a class="anchor-link" href="#%F0%9F%8C%8D-Common-Pretrained-Networks">¶</a></h4>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=e87bee68">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p><a href="#table-of-contents">Back to the top</a></p>
+<hr/>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=58bbe575">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p><a id="scaling-up"></a></p>
+<h1 id="%F0%9F%93%88-Scaling-Up">📈 Scaling Up<a class="anchor-link" href="#%F0%9F%93%88-Scaling-Up">¶</a></h1>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b0a103a1">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p><a id="depth-vs-performance"></a></p>
+<h4 id="%F0%9F%A7%AE-Depth-vs.-Performance-Tradeoffs">🧮 Depth vs. Performance Tradeoffs<a class="anchor-link" href="#%F0%9F%A7%AE-Depth-vs.-Performance-Tradeoffs">¶</a></h4>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=6cd43090">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p><a id="hardware"></a></p>
+<h4 id="%F0%9F%A7%A0-Hardware-Considerations">🧠 Hardware Considerations<a class="anchor-link" href="#%F0%9F%A7%A0-Hardware-Considerations">¶</a></h4>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=04075618">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p><a id="batch-norm-vs-gradient"></a></p>
+<h4 id="%E2%9A%96%EF%B8%8F-Batch-Norm-vs.-Gradient-Flow">⚖️ Batch Norm vs. Gradient Flow<a class="anchor-link" href="#%E2%9A%96%EF%B8%8F-Batch-Norm-vs.-Gradient-Flow">¶</a></h4>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b3729e28">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p><a href="#table-of-contents">Back to the top</a></p>
+<hr/>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c583bf64">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8020,67 +8084,43 @@ a.anchor-link {
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=36ca2d24">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=43543602">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><a id="common-pitfalls"></a></p>
-<h4 id="%E2%9A%A0%EF%B8%8F-Common-Pitfalls">⚠️ Common Pitfalls<a class="anchor-link" href="#%E2%9A%A0%EF%B8%8F-Common-Pitfalls">¶</a></h4>
+<p><a id="summary"></a></p>
+<h4 id="%F0%9F%A7%A0-Summary-of-Key-Concepts">🧠 Summary of Key Concepts<a class="anchor-link" href="#%F0%9F%A7%A0-Summary-of-Key-Concepts">¶</a></h4>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=a97e0241">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=7e013153">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><a id="best-practices"></a></p>
-<h4 id="%F0%9F%8E%AF-Best-Practices">🎯 Best Practices<a class="anchor-link" href="#%F0%9F%8E%AF-Best-Practices">¶</a></h4>
+<p><a id="pitfalls"></a></p>
+<h4 id="%E2%9A%A0%EF%B8%8F-Common-Pitfalls-in-Deep-Learning">⚠️ Common Pitfalls in Deep Learning<a class="anchor-link" href="#%E2%9A%A0%EF%B8%8F-Common-Pitfalls-in-Deep-Learning">¶</a></h4>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=3e29d041">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c6ae535a">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><a id="scaling-challenges-in-neural-networks"></a></p>
-<h4 id="%E2%9A%A1-Scaling-Challenges">⚡ Scaling Challenges<a class="anchor-link" href="#%E2%9A%A1-Scaling-Challenges">¶</a></h4>
+<p><a id="whats-next"></a></p>
+<h4 id="%F0%9F%9A%80-What's-Next:-Transformers-&amp;-Attention">🚀 What's Next: Transformers &amp; Attention<a class="anchor-link" href="#%F0%9F%9A%80-What's-Next:-Transformers-&amp;-Attention">¶</a></h4>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c428cadf">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><a id="further-topics-to-learn-in-neural-networks"></a></p>
-<h4 id="%F0%9F%9A%80-Further-Topics">🚀 Further Topics<a class="anchor-link" href="#%F0%9F%9A%80-Further-Topics">¶</a></h4>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=2a652061">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><a id="what-to-learn-after-neural-networks"></a></p>
-<h4 id="%F0%9F%94%AE-What-Next">🔮 What Next<a class="anchor-link" href="#%F0%9F%94%AE-What-Next">¶</a></h4>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=782c0563">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=5ce015e3">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>

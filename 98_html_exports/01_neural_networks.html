@@ -14648,18 +14648,18 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <details><summary><strong>📖 Click to Expand</strong></summary>
 
-This notebook is a **hands-on implementation** of a basic neural network from scratch.
+This notebook is a <strong>hands-on implementation</strong> of a basic neural network from scratch.<br><br>
 
-You’ll learn how a neural network:
-- Processes input data through layers
-- Computes predictions via forward propagation
-- Learns by minimizing a loss function
-- Updates its parameters using backpropagation and gradient descent
+You’ll learn how a neural network:<br>
+- Processes input data through layers<br>
+- Computes predictions via forward propagation<br>
+- Learns by minimizing a loss function<br>
+- Updates its parameters using backpropagation and gradient descent<br><br>
 
-🔍 This is not about real-world deployment or large models.  
-It’s about **understanding the inner mechanics** that all modern models (including LLMs) are built on.
+🔍 This is not about real-world deployment or large models.<br>
+It’s about <strong>understanding the inner mechanics</strong> that all modern models (including LLMs) are built on.<br><br>
 
-We'll use a small binary classification task (`make_moons`) and train a neural net **end-to-end**.
+We'll use a small binary classification task and train a neural net <strong>end-to-end</strong>.
 
 </details>
 </div>
@@ -14686,20 +14686,20 @@ We'll use a small binary classification task (`make_moons`) and train a neural n
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <details><summary><strong>📖 Click to Expand</strong></summary>
 
-A **neural network** is a function approximator built from layers of interconnected units called **neurons**.  
+A <strong>neural network</strong> is a function approximator built from layers of interconnected units called <strong>neurons</strong>.<br><br>
 
-Each neuron performs a simple weighted sum of its inputs, adds a bias, and applies a **non-linear activation**.  
-Layers of such neurons can approximate complex functions.
+Each neuron performs a simple weighted sum of its inputs, adds a bias, and applies a <strong>non-linear activation</strong>.<br>
+Layers of such neurons can approximate complex functions.<br><br>
 
-The simplest neural network:
-- Has an **input layer** (features)
-- One or more **hidden layers** (intermediate transformations)
-- An **output layer** (final prediction)
+The simplest neural network:<br>
+- Has an <strong>input layer</strong> (features)<br>
+- One or more <strong>hidden layers</strong> (intermediate transformations)<br>
+- An <strong>output layer</strong> (final prediction)<br><br>
 
-They are trained by:
-1. **Forward propagation**: compute output
-2. **Loss calculation**: measure how wrong the prediction is
-3. **Backpropagation**: update weights via gradient descent
+They are trained by:<br>
+1. <strong>Forward propagation</strong>: compute output<br>
+2. <strong>Loss calculation</strong>: measure how wrong the prediction is<br>
+3. <strong>Backpropagation</strong>: update weights via gradient descent<br><br>
 
 Neural networks power most of modern AI — from image recognition to language generation.
 
@@ -14728,22 +14728,22 @@ Neural networks power most of modern AI — from image recognition to language g
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <details><summary><strong>📖 Click to Expand</strong></summary>
 
-Traditional ML models like logistic regression, decision trees, or SVMs:
-- Rely on **manually engineered features**
-- Struggle with **non-linear boundaries** or high-dimensional data
-- Don’t scale well for structured data like **images, audio, or text**
+Traditional ML models like logistic regression, decision trees, or SVMs:<br>
+- Rely on <strong>manually engineered features</strong><br>
+- Struggle with <strong>non-linear boundaries</strong> or high-dimensional data<br>
+- Don’t scale well for structured data like <strong>images, audio, or text</strong><br><br>
 
-Neural networks, by contrast:
-- **Learn hierarchical features** automatically from raw data
-- Can approximate any function (given enough neurons/layers)
-- Scale to millions of parameters and **power modern deep learning**
+Neural networks, by contrast:<br>
+- <strong>Learn hierarchical features</strong> automatically from raw data<br>
+- Can approximate any function (given enough neurons/layers)<br>
+- Scale to millions of parameters and <strong>power modern deep learning</strong><br><br>
 
-They are especially useful when:
-- You want **end-to-end learning**
-- You’re working with **structured or high-dimensional data**
-- Traditional models hit a ceiling in accuracy or flexibility
+They are especially useful when:<br>
+- You want <strong>end-to-end learning</strong><br>
+- You’re working with <strong>structured or high-dimensional data</strong><br>
+- Traditional models hit a ceiling in accuracy or flexibility<br><br>
 
-📌 In this notebook, we’ll see how even a tiny neural net can outperform linear models on non-linear classification tasks like `make_moons`.
+📌 In this notebook, we’ll see how even a tiny neural net can outperform linear models on non-linear classification tasks like <code>make_moons</code>.
 
 </details>
 </div>
@@ -14947,9 +14947,9 @@ They are especially useful when:
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <details><summary><strong>📖 Click to Expand</strong></summary>
 
-Before training, it helps to **visualize the classification problem**.
+Before training, it helps to <strong>visualize the classification problem</strong>.<br><br>
 
-Each point in `make_moons` belongs to one of two classes (0 or 1), arranged in two interleaving arcs.  
+Each point belongs to one of two classes (0 or 1), arranged in two interleaving arcs.<br>
 This non-linear shape makes it impossible for a straight-line decision boundary to separate them cleanly — a perfect case for neural networks to shine.
 
 </details>
@@ -15039,20 +15039,20 @@ class="
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <details><summary><strong>📖 Click to Expand</strong></summary>
 
-We're working with a **binary classification task**.
+We're working with a <strong>binary classification task</strong>.<br><br>
 
-- **Inputs**: Each sample has 2 numerical features → shape `(n_samples, 2)`
-- **Outputs**: Binary labels — either 0 or 1
+- <strong>Inputs</strong>: Each sample has 2 numerical features → shape <code>(n_samples, 2)</code><br>
+- <strong>Outputs</strong>: Binary labels — either 0 or 1<br><br>
 
-Our model should:
-- Take a 2D input vector
-- Pass it through one or more layers
-- Output a **single probability** (between 0 and 1)
-- Use a **threshold** (e.g., 0.5) to classify as class 0 or 1
+Our model should:<br>
+- Take a 2D input vector<br>
+- Pass it through one or more layers<br>
+- Output a <strong>single probability</strong> (between 0 and 1)<br>
+- Use a <strong>threshold</strong> (e.g., 0.5) to classify as class 0 or 1<br><br>
 
-This implies:
-- `Input dimension` = 2  
-- `Output dimension` = 1 (with sigmoid activation)
+This implies:<br>
+- <code>Input dimension</code> = 2<br>
+- <code>Output dimension</code> = 1 (with sigmoid activation)
 
 </details>
 </div>
@@ -15146,32 +15146,32 @@ Output shape (y_train): (800,)
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <details><summary><strong>📖 Click to Expand</strong></summary>
 
-A **neuron** is the fundamental unit of a neural network. It performs three steps:
+A <strong>neuron</strong> is the fundamental unit of a neural network. It performs three steps:<br><br>
 
-1. Computes a **weighted sum** of its inputs:  
-   $$
-   z = w_1x_1 + w_2x_2 + \dots + w_nx_n + b
-   $$
+1. Computes a <strong>weighted sum</strong> of its inputs:  
+$$
+z = w_1x_1 + w_2x_2 + \dots + w_nx_n + b
+$$
 
-2. Applies a **non-linear activation function** to this sum:  
-   $$
-   a = \sigma(z)
-   $$
+2. Applies a <strong>non-linear activation function</strong> to this sum:  
+$$
+a = \sigma(z)
+$$
 
-3. Passes the output to the next layer or as final output
+3. Passes the output to the next layer or as final output<br><br>
 
-**Common activation functions:**
+<strong>Common activation functions:</strong><br><br>
 
-- **ReLU**:                                  
-  $$\text{ReLU}(x) = \max(0, x)$$  
-  Sparse, fast, and widely used for hidden layers.
+- <strong>ReLU</strong>:  
+$$\text{ReLU}(x) = \max(0, x)$$  
+Sparse, fast, and widely used for hidden layers.<br><br>
 
-- **Sigmoid**:  
-  $$\text{Sigmoid}(x) = \frac{1}{1 + \exp(-x)}$$  
-  Outputs values between 0 and 1 — useful for binary classification outputs.
+- <strong>Sigmoid</strong>:  
+$$\text{Sigmoid}(x) = \frac{1}{1 + \exp(-x)}$$  
+Outputs values between 0 and 1 — useful for binary classification outputs.<br><br>
 
-👉 In this notebook, we’ll use **ReLU for hidden layers**  
-and **sigmoid for the output layer**.
+👉 In this notebook, we’ll use <strong>ReLU for hidden layers</strong>  
+and <strong>sigmoid for the output layer</strong>.
 
 </details>
 </div>
@@ -15266,23 +15266,23 @@ Activated output (ReLU applied): 0.8099999999999999
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <details><summary><strong>📖 Click to Expand</strong></summary>
 
-Neural networks are built by stacking **layers of neurons**.
+Neural networks are built by stacking <strong>layers of neurons</strong>.<br><br>
 
-- The **input layer** receives raw feature values (e.g., 2 features per sample)
-- One or more **hidden layers** transform inputs using weights, biases, and activations
-- The **output layer** produces the final prediction (e.g., a probability between 0 and 1)
+- The <strong>input layer</strong> receives raw feature values (e.g., 2 features per sample)<br>
+- One or more <strong>hidden layers</strong> transform inputs using weights, biases, and activations<br>
+- The <strong>output layer</strong> produces the final prediction (e.g., a probability between 0 and 1)<br><br>
 
-Each layer computes the following:
+Each layer computes the following:  
 $$
 a^{[l]} = \sigma(W^{[l]} \cdot a^{[l-1]} + b^{[l]})
 $$
 
-Where:
-- $a^{[l-1]}$ is the output from the previous layer (or the input vector if $l=1$)  
-- $W^{[l]}$ and $b^{[l]}$ are the weight matrix and bias vector for layer $l$  
-- $\sigma$ is the activation function (e.g., ReLU or sigmoid)
+Where:<br>
+- \(a^{[l-1]}\) is the output from the previous layer (or the input vector if \(l=1\))<br>
+- \(W^{[l]}\) and \(b^{[l]}\) are the weight matrix and bias vector for layer \(l\)<br>
+- \(\sigma\) is the activation function (e.g., ReLU or sigmoid)<br><br>
 
-You can think of a neural network as a **function composed of functions**, where each layer applies a transformation to the previous output.
+You can think of a neural network as a <strong>function composed of functions</strong>, where each layer applies a transformation to the previous output.
 
 </details>
 </div>
@@ -15462,25 +15462,25 @@ class="
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <details><summary><strong>📖 Click to Expand</strong></summary>
 
-**Forward propagation** is the process of computing the output of a neural network given an input.
+<strong>Forward propagation</strong> is the process of computing the output of a neural network given an input.<br><br>
 
-It flows from input layer → hidden layers → output layer:
+It flows from input layer → hidden layers → output layer:<br><br>
 
-For each layer:
-- Compute the **weighted sum**:  
+For each layer:<br>
+- Compute the <strong>weighted sum</strong>:  
   $$
   z^{[l]} = W^{[l]} \cdot a^{[l-1]} + b^{[l]}
-  $$
-- Apply the **activation function**:  
+  $$<br>
+- Apply the <strong>activation function</strong>:  
   $$
   a^{[l]} = \sigma(z^{[l]})
-  $$
+  $$<br><br>
 
-In our case:
-- Use **ReLU** in the hidden layer
-- Use **Sigmoid** in the output layer (for binary classification)
+In our case:<br>
+- Use <strong>ReLU</strong> in the hidden layer<br>
+- Use <strong>Sigmoid</strong> in the output layer (for binary classification)<br><br>
 
-The output after the final activation is the predicted probability \( \hat{y} \).
+The output after the final activation is the predicted probability \( \hat{y} \ ).
 
 </details>
 </div>
@@ -15568,29 +15568,25 @@ z2 (weighted sum at output): [0.55]
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <details><summary><strong>📖 Click to Expand</strong></summary>
 
-A **loss function** tells us how far the model's prediction $\hat{y}$ is from the true label \( y \).
+A <strong>loss function</strong> tells us how far the model's prediction \( \hat{y} \) is from the true label \( y \).<br><br>
 
-For **binary classification**, two common choices are:
+For <strong>binary classification</strong>, two common choices are:<br><br>
 
-
-
-**1. Binary Cross-Entropy Loss (Log Loss):**
+<strong>1. Binary Cross-Entropy Loss (Log Loss):</strong>  
 $$
 \mathcal{L} = - \left( y \cdot \log(\hat{y}) + (1 - y) \cdot \log(1 - \hat{y}) \right)
-$$
+$$  
+- Preferred for probability outputs (like with sigmoid)<br>
+- Penalizes confident wrong predictions heavily<br><br>
 
-- Preferred for probability outputs (like with sigmoid)
-- Penalizes confident wrong predictions heavily
-
-**2. Mean Squared Error (MSE):**
+<strong>2. Mean Squared Error (MSE):</strong>  
 $$
 \mathcal{L} = \frac{1}{n} \sum (y - \hat{y})^2
-$$
+$$  
+- Simpler but less effective for classification<br>
+- Doesn’t penalize confidence as sharply<br><br>
 
-- Simpler but less effective for classification
-- Doesn’t penalize confidence as sharply
-
-📌 **We'll use Binary Cross-Entropy** in this notebook — it's standard for binary classification with sigmoid outputs.
+📌 <strong>We'll use Binary Cross-Entropy</strong> in this notebook — it's standard for binary classification with sigmoid outputs.
 
 </details>
 </div>
@@ -15665,23 +15661,23 @@ $$
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <details><summary><strong>📖 Click to Expand</strong></summary>
 
-**Backpropagation** is how a neural network learns.
+<strong>Backpropagation</strong> is how a neural network learns.<br><br>
 
-Once the forward pass produces a prediction ($\hat{y}$), we compute how the loss changes with respect to each parameter — and adjust weights in the **opposite direction of the gradient**.
+Once the forward pass produces a prediction (\( \hat{y} \)), we compute how the loss changes with respect to each parameter — and adjust weights in the <strong>opposite direction of the gradient</strong>.<br><br>
 
-This is powered by the **chain rule**:
-- Gradients are computed layer-by-layer starting from the loss
-- Each layer uses:
-  - Derivative of its activation function
-  - Gradient from the next layer
-  - Local input values (from forward pass)
+This is powered by the <strong>chain rule</strong>:<br>
+- Gradients are computed layer-by-layer starting from the loss<br>
+- Each layer uses:<br>
+  - Derivative of its activation function<br>
+  - Gradient from the next layer<br>
+  - Local input values (from forward pass)<br><br>
 
-In our case:
-- Use **ReLU’** in the hidden layer
-- Use **Sigmoid’** in the output layer
-- Chain them to compute gradients for \( W_2, b_2, W_1, b_1 \)
+In our case:<br>
+- Use <strong>ReLU’</strong> in the hidden layer<br>
+- Use <strong>Sigmoid’</strong> in the output layer<br>
+- Chain them to compute gradients for \( W_2, b_2, W_1, b_1 \)<br><br>
 
-We'll implement this for **one sample**, numerically.
+We'll implement this for <strong>one sample</strong>, numerically.
 
 </details>
 </div>
@@ -15778,25 +15774,24 @@ Gradient db1: [[-0.1829322  0.       ]]
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <details><summary><strong>📖 Click to Expand</strong></summary>
 
-Once we compute gradients using backpropagation, we **update the weights** to reduce loss.  
-This is the core of **gradient descent**:
+Once we compute gradients using backpropagation, we <strong>update the weights</strong> to reduce loss.<br>
+This is the core of <strong>gradient descent</strong>:<br><br>
 
-**Weight update rule:**
+<strong>Weight update rule:</strong>  
 $$
 \theta := \theta - \eta \cdot \frac{\partial \mathcal{L}}{\partial \theta}
-$$
+$$<br>
 
+Where:<br>
+- \( \theta \) = a parameter (like \( W \) or \( b \))<br>
+- \( \eta \) = learning rate (step size)<br>
+- \( \frac{\partial \mathcal{L}}{\partial \theta} \) = gradient of the loss with respect to that parameter<br><br>
 
-Where:
-- $ \theta $ = a parameter (like $ W $ or $ b $)  
-- $ \eta $ = learning rate (step size)  
-- $ \frac{\partial \mathcal{L}}{\partial \theta} $ = gradient of the loss with respect to that parameter
+<strong>Variants:</strong><br>
+- <strong>SGD (Stochastic Gradient Descent)</strong>: updates using one sample at a time<br>
+- <strong>Adam</strong>: adaptive learning rate + momentum, better for noisy/large-scale training<br><br>
 
-**Variants:**
-- **SGD (Stochastic Gradient Descent)**: updates using one sample at a time  
-- **Adam**: adaptive learning rate + momentum, better for noisy/large-scale training
-
-📌 In this notebook, we’ll use **plain SGD** to keep things transparent.
+📌 In this notebook, we’ll use <strong>plain SGD</strong> to keep things transparent.
 
 </details>
 </div>
@@ -15916,13 +15911,13 @@ Updated b2: [0.13658644]
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <details><summary><strong>📖 Click to Expand</strong></summary>
 
-This is the full training loop for a binary classification task using:
+This is the full training loop for a binary classification task using:<br><br>
 
-- A 2-layer neural network:
-  - Hidden layer with ReLU activation
-  - Output layer with Sigmoid activation
-- Binary cross-entropy loss
-- Batch gradient descent (all samples at once)
+- A 2-layer neural network:<br>
+  - Hidden layer with ReLU activation<br>
+  - Output layer with Sigmoid activation<br>
+- Binary cross-entropy loss<br>
+- Batch gradient descent (all samples at once)<br><br>
 
 We'll record the loss at each epoch for later visualization.
 
@@ -16151,25 +16146,14 @@ Sample predictions: [0.821 0.046 0.008 0.015 0.849]
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <details><summary><strong>📖 Click to Expand</strong></summary>
 
-Tracking the loss curve helps verify whether the network is actually learning.  
-We expect to see a **downward trend** if training is working correctly.
+Tracking the loss curve helps verify whether the network is actually learning.<br>
+We expect to see a <strong>downward trend</strong> if training is working correctly.<br><br>
 
-If the loss plateaus or explodes:
-- Check learning rate
+If the loss plateaus or explodes:<br>
+- Check learning rate<br>
 - Check gradient flow (activation functions, initialization, etc.)
 
 </details>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-
 </div>
 </div>
 </div>
@@ -16254,9 +16238,9 @@ If the loss plateaus or explodes:
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <details><summary><strong>📖 Click to Expand</strong></summary>
 
-A decision boundary plot helps visualize how the trained model separates the two classes.
+A decision boundary plot helps visualize how the trained model separates the two classes.<br><br>
 
-We’ll generate a grid of input points, run them through the trained network, and color the regions based on predicted probability.
+We’ll generate a grid of input points, run them through the trained network, and color the regions based on predicted probability.<br><br>
 
 If training was successful, we should see a smooth boundary that aligns with the class clusters.
 
@@ -16394,17 +16378,42 @@ class="
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <details><summary><strong>📖 Click to Expand</strong></summary>
 
-##### ⚠️ Common Pitfalls & Best Practices (Side by Side)
+<h5>⚠️ Common Pitfalls & Best Practices (Side by Side)</h5>
 
-| Pitfall | Best Practice |
-|--------|---------------|
-| Using MSE loss for classification | Use **binary cross-entropy** with sigmoid |
-| Training with a single sample | Use **batch updates** or **mini-batches** |
-| Initializing weights too large | Use **small random weights**, e.g., $\mathcal{N}(0, 0.01)$ |
-| Skipping non-linearity | Add **ReLU** or **tanh** between layers |
-| Overfitting to training data | Monitor **loss curve** and use validation/test splits |
-| Using too few hidden units | Start small (4–8) and scale if needed |
-| Expecting too much from shallow nets | Go **deeper**, not just wider, for complex tasks |
+<table>
+  <tr>
+    <th>Pitfall</th>
+    <th>Best Practice</th>
+  </tr>
+  <tr>
+    <td>Using MSE loss for classification</td>
+    <td>Use <strong>binary cross-entropy</strong> with sigmoid</td>
+  </tr>
+  <tr>
+    <td>Training with a single sample</td>
+    <td>Use <strong>batch updates</strong> or <strong>mini-batches</strong></td>
+  </tr>
+  <tr>
+    <td>Initializing weights too large</td>
+    <td>Use <strong>small random weights</strong>, e.g., \( \mathcal{N}(0, 0.01) \)</td>
+  </tr>
+  <tr>
+    <td>Skipping non-linearity</td>
+    <td>Add <strong>ReLU</strong> or <strong>tanh</strong> between layers</td>
+  </tr>
+  <tr>
+    <td>Overfitting to training data</td>
+    <td>Monitor <strong>loss curve</strong> and use validation/test splits</td>
+  </tr>
+  <tr>
+    <td>Using too few hidden units</td>
+    <td>Start small (4–8) and scale if needed</td>
+  </tr>
+  <tr>
+    <td>Expecting too much from shallow nets</td>
+    <td>Go <strong>deeper</strong>, not just wider, for complex tasks</td>
+  </tr>
+</table>
 
 </details>
 </div>
@@ -16431,17 +16440,17 @@ class="
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <details><summary><strong>📖 Click to Expand</strong></summary>
 
-Now that you’ve built and trained a neural network from scratch:
+Now that you’ve built and trained a neural network from scratch:<br><br>
 
-✅ You understand how data flows  
-✅ You’ve written backprop manually  
-✅ You’ve visualized the decision boundary
+✅ You understand how data flows<br>
+✅ You’ve written backprop manually<br>
+✅ You’ve visualized the decision boundary<br><br>
 
-### Next Steps:
+<h4>Next Steps:</h4>
 
-- **Notebook 2**: Deepen the network — add layers, expand activation logic  
-- **Notebook 3**: Move from tabular to **sequential data** (text), and introduce **attention**
-- **Notebook 4 onward**: Scale your understanding to **transformers**, **LLMs**, and **fine-tuning**
+- <strong>Notebook 2</strong>: Deepen the network — add layers, expand activation logic<br>
+- <strong>Notebook 3</strong>: Move from tabular to <strong>sequential data</strong> (text), and introduce <strong>attention</strong><br>
+- <strong>Notebook 4 onward</strong>: Scale your understanding to <strong>transformers</strong>, <strong>LLMs</strong>, and <strong>fine-tuning</strong><br><br>
 
 📌 From this point, you stop being a model consumer and start becoming a system builder.
 
